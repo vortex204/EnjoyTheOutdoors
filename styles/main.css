@@ -1,0 +1,18 @@
+body {
+  font-family: sans-serif;
+  background-color: darkkhaki;
+}
+nav {
+  display: block;
+  margin: 1em;
+}
+nav a {
+  text-decoration: none;
+  background-color: darkolivegreen;
+  color: goldenrod;
+  font-size: 1em;
+  padding: 0.25em;
+  margin: 1.5px;
+  border-radius: 0.25em;
+  display: inline-block;
+}
