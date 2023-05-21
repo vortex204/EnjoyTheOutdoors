@@ -6,13 +6,21 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>parks</title>
     <link rel="stylesheet" href="styles/main.css" />
+    <script src="data/locationData.js"></script>
+    <script src="data/nationalParkData.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/parks.js"></script>
   </head>
   <body>
     <header>
       <nav id="nav"></nav>
       <h1>National Parks</h1>
     </header>
-    <main></main>
+    <main>
+      <select id="location" value="">
+        <option value="">Select a Location</option>
+      </select>
+      <div id="results"></div>
+    </main>
   </body>
 </html>
