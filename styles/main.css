@@ -23,9 +23,6 @@ nav a:hover {
   margin: 3px 9px 9px 3px;
   padding: 0.5rem;
   border-radius: 1.5rem;
-  width: 160px;
-  min-height: 80px;
   display: inline-flex;
   box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
 }

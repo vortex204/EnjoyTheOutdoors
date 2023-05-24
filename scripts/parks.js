@@ -8,13 +8,51 @@ function locationOption(item) {
 function parkCard(item) {
   const card = document.createElement("div");
   card.classList.add("card");
-  card.innerHTML = item.LocationName;
+
+  // Create HTML elements to display the park information
+  const name = document.createElement("h2");
+  name.textContent = item.LocationName;
+
+  const address = document.createElement("p");
+  address.textContent = "Address: " + item.Address;
+
+  const city = document.createElement("p");
+  city.textContent = "City: " + item.City;
+
+  const state = document.createElement("p");
+  state.textContent = "State: " + item.State;
+
+  const zipcode = document.createElement("p");
+  zipcode.textContent = "Zip Code: " + item.ZipCode;
+
+  const phone = document.createElement("p");
+  phone.textContent = "Phone: " + item.Phone;
+
+  const fax = document.createElement("p");
+  fax.textContent = "Fax: " + item.Fax;
+
+  card.appendChild(name);
+  card.appendChild(address);
+  card.appendChild(city);
+  card.appendChild(state);
+  card.appendChild(zipcode);
+  card.appendChild(phone);
+  card.appendChild(fax);
+
   return card;
 }
 
 function showCards(list, target) {
-  target.innerHTML = ""; //CLEAR
-  list.forEach((item) => target.appendChild(parkCard(item)));
+  target.innerHTML = ""; // Clear the previous results
+
+  // Check if there are any matches
+  if (list.length === 0) {
+    const message = document.createElement("p");
+    message.textContent = "No results found.";
+    target.appendChild(message);
+  } else {
+    list.forEach((item) => target.appendChild(parkCard(item)));
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {

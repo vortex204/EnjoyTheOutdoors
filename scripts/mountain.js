@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
     heading.innerHTML = mountainInfo.name;
     image.src = "images/" + mountainInfo.img;
     description.innerHTML = mountainInfo.desc;
-    elevation.innerHTML = mountainInfo.elevation;
-    effort.innerHTML = mountainInfo.effort;
+    elevation.innerHTML = "Elevation: " + mountainInfo.elevation;
+    effort.innerHTML = "Effort: " + mountainInfo.effort;
     const sunriseAndSunsetData = await getSunriseAndSunsetForMountain(
       mountainInfo.coords.lat,
       mountainInfo.coords.lng
