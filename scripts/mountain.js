@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   async function displayMountain(mountainInfo) {
     heading.innerHTML = mountainInfo.name;
     image.src = "images/" + mountainInfo.img;
+    image.classList.add("img-fluid");
     description.innerHTML = mountainInfo.desc;
     elevation.innerHTML = "Elevation: " + mountainInfo.elevation;
     effort.innerHTML = "Effort: " + mountainInfo.effort;

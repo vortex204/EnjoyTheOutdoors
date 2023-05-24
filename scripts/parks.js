@@ -41,64 +41,39 @@ function parkCard(item) {
 }
 
 function showCards(list, target) {
-  target.innerHTML = ""; // Clear the previous results
+  const tableBody = target.querySelector("tbody");
+  tableBody.innerHTML = ""; // Clear the previous results
 
   if (list.length === 0) {
-    const message = document.createElement("p");
+    const tableRow = document.createElement("tr");
+    const message = document.createElement("td");
+    message.setAttribute("colspan", "7");
     message.textContent = "No results found.";
-    target.appendChild(message);
+    tableRow.appendChild(message);
+    tableBody.appendChild(tableRow);
   } else {
-    const table = document.createElement("table");
-    table.classList.add("table");
-    table.classList.add("table-striped");
-
-    const tableHead = document.createElement("thead");
-    const tableHeadRow = document.createElement("tr");
-    const headers = [
-      "Location Name",
-      "Address",
-      "City",
-      "State",
-      "Zip Code",
-      "Phone",
-      "Fax",
-    ];
-
-    headers.forEach((headerText) => {
-      const th = document.createElement("th");
-      th.textContent = headerText;
-      tableHeadRow.appendChild(th);
-    });
-
-    tableHead.appendChild(tableHeadRow);
-    table.appendChild(tableHead);
-
-    const tableBody = document.createElement("tbody");
     list.forEach((item) => {
       const tableRow = parkCard(item);
       tableBody.appendChild(tableRow);
     });
-
-    table.appendChild(tableBody);
-    target.appendChild(table);
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const results = document.getElementById("results");
+  const results = document.getElementById("list");
   const select = document.getElementById("location");
   const selectType = document.getElementById("type");
 
   function applyFilters() {
     const v = select.selectedOptions[0].value;
     const matches = nationalParksArray.filter(
-      (item) => item.State == v || v == ""
+      (item) => item.State === v || v === ""
     );
 
     const v2 = selectType.selectedOptions[0].value;
     const matches2 = matches.filter(
       (item) =>
-        item.LocationName.toLowerCase().includes(v2.toLowerCase()) || v2 == ""
+        item.LocationName.toLowerCase().includes(v2.toLowerCase()) || v2 === ""
     );
 
     showCards(matches2, results);
@@ -111,6 +86,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   select.addEventListener("change", applyFilters);
   selectType.addEventListener("change", applyFilters);
-
-  //SHOW ALL CARDS
 });
