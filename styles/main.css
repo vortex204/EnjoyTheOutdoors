@@ -1,7 +1,22 @@
 body {
   font-family: sans-serif;
   background-color: darkkhaki;
+  text-align: center;
+}
+
+h1,
+p,
+main {
   margin: 1em;
+}
+select {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+#results {
+  margin-top: 2em;
 }
 nav {
   display: block;
@@ -21,6 +36,13 @@ nav a:hover {
   color: darkgoldenrod;
 }
 
+.banner {
+  height: 80px;
+}
+.banner img {
+  height: 80px;
+  width: 100%;
+}
 .card {
   margin: 3px 9px 9px 3px;
   padding: 0.5rem;

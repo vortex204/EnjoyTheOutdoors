@@ -10,6 +10,16 @@ function navLink(item) {
   a.innerHTML = item.name;
   return a;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const image = document.createElement("img");
+  image.src = "images/banner.jpg";
+  image.alt = "Banner Image";
+  const banner = document.createElement("div");
+  banner.classList.add("banner");
+  banner.appendChild(image);
+  document.body.prepend(banner);
+});
 document.addEventListener("DOMContentLoaded", () => {
   const nav = document.getElementById("nav");
 
