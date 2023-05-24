@@ -1,57 +1,86 @@
 function locationOption(item) {
   const option = document.createElement("option");
   option.value = item;
-  option.innerHTML = item;
+  option.textContent = item;
   return option;
 }
 
 function parkCard(item) {
-  const card = document.createElement("div");
-  card.classList.add("card");
+  const row = document.createElement("tr");
 
-  // Create HTML elements to display the park information
-  const name = document.createElement("h2");
+  const name = document.createElement("td");
   name.textContent = item.LocationName;
 
-  const address = document.createElement("p");
-  address.textContent = "Address: " + item.Address;
+  const address = document.createElement("td");
+  address.textContent = item.Address;
 
-  const city = document.createElement("p");
-  city.textContent = "City: " + item.City;
+  const city = document.createElement("td");
+  city.textContent = item.City;
 
-  const state = document.createElement("p");
-  state.textContent = "State: " + item.State;
+  const state = document.createElement("td");
+  state.textContent = item.State;
 
-  const zipcode = document.createElement("p");
-  zipcode.textContent = "Zip Code: " + item.ZipCode;
+  const zipcode = document.createElement("td");
+  zipcode.textContent = item.ZipCode;
 
-  const phone = document.createElement("p");
-  phone.textContent = "Phone: " + item.Phone;
+  const phone = document.createElement("td");
+  phone.textContent = item.Phone;
 
-  const fax = document.createElement("p");
-  fax.textContent = "Fax: " + item.Fax;
+  const fax = document.createElement("td");
+  fax.textContent = item.Fax;
 
-  card.appendChild(name);
-  card.appendChild(address);
-  card.appendChild(city);
-  card.appendChild(state);
-  card.appendChild(zipcode);
-  card.appendChild(phone);
-  card.appendChild(fax);
+  row.appendChild(name);
+  row.appendChild(address);
+  row.appendChild(city);
+  row.appendChild(state);
+  row.appendChild(zipcode);
+  row.appendChild(phone);
+  row.appendChild(fax);
 
-  return card;
+  return row;
 }
 
 function showCards(list, target) {
   target.innerHTML = ""; // Clear the previous results
 
-  // Check if there are any matches
   if (list.length === 0) {
     const message = document.createElement("p");
     message.textContent = "No results found.";
     target.appendChild(message);
   } else {
-    list.forEach((item) => target.appendChild(parkCard(item)));
+    const table = document.createElement("table");
+    table.classList.add("table");
+    table.classList.add("table-striped");
+
+    const tableHead = document.createElement("thead");
+    const tableHeadRow = document.createElement("tr");
+    const headers = [
+      "Location Name",
+      "Address",
+      "City",
+      "State",
+      "Zip Code",
+      "Phone",
+      "Fax",
+    ];
+
+    headers.forEach((headerText) => {
+      const th = document.createElement("th");
+      th.textContent = headerText;
+      tableHeadRow.appendChild(th);
+    });
+
+    tableHead.appendChild(tableHeadRow);
+    table.appendChild(tableHead);
+
+    const tableBody = document.createElement("tbody");
+    list.forEach((item) => {
+      const tableRow = parkCard(item);
+      tableBody.appendChild(tableRow);
+    });
+
+    table.appendChild(tableBody);
+    target.appendChild(table);
   }
 }
 

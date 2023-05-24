@@ -26,3 +26,12 @@ nav a:hover {
   padding: 0.5rem;
   border-radius: 1.5rem;
 }
+
+thead {
+  background-color: black;
+  color: white;
+}
+
+tbody tr {
+  border-bottom: 1px solid black;
+}
