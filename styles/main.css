@@ -2,6 +2,7 @@ body {
   font-family: sans-serif;
   background-color: darkkhaki;
   text-align: center;
+  color: white;
 }
 
 h1,
@@ -30,17 +31,24 @@ nav a {
   padding: 0.25em;
   margin: 1.5px;
   border-radius: 0.25em;
-  /* display: inline-block; */
+  display: inline-block;
 }
 nav a:hover {
   color: darkgoldenrod;
 }
 
+.logo {
+  top: 20px;
+  left: 80px;
+  width: 50px;
+  display: inline-block;
+}
+
 .banner {
-  height: 80px;
+  height: 100px;
 }
 .banner img {
-  height: 80px;
+  height: 100px;
   width: 100%;
 }
 .card {
@@ -56,4 +64,28 @@ thead {
 
 tbody tr {
   border-bottom: 1px solid black;
+}
+
+td {
+  object-fit: contain;
+  color: white;
+}
+
+td:hover {
+  background-color: white;
+  color: black;
+}
+
+img.img-fluid:hover {
+  color: blue;
+  background-color: blue;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: 500px;
+}
+
+p {
+  font-size: 20px;
 }

@@ -19,9 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
   banner.classList.add("banner");
   banner.appendChild(image);
   document.body.prepend(banner);
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const nav = document.getElementById("nav");
 
+  const nav = document.getElementById("nav");
   navURLs.forEach((item) => nav.appendChild(navLink(item)));
+
+  const logo = document.createElement("img");
+  logo.src = "images/logo.png";
+  logo.alt = "Logo";
+  logo.classList.add("logo");
+  nav.insertAdjacentElement("afterbegin", logo);
 });
+
