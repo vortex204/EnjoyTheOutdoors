@@ -45,10 +45,22 @@
         </div>
         <div class="row">
           <div class="col-lg-6 mx-auto">
-            <p>or select by park type</p>
+            <p>Or Select By Park Type</p>
             <select id="type" class="form-select mb-3" value="">
               <option value="">Select a Type</option>
             </select>
+           <div class="input-group mb-3">
+              <span class="input-group-text">
+                <img src="images/searchicon.png" width="20" />
+              </span>
+              <input
+                id="searchBox"
+                type="text"
+                class="form-control"
+                placeholder="Search for park here"
+              />
+            </div>
+            <ul id="searchOptions"></ul>
           </div>
         </div>
         <div class="row">
@@ -67,7 +79,7 @@
             <th>Fax</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="tableBody">
           <tr>
             <td colspan="7"></td>
           </tr>

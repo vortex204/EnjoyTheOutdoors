@@ -41,7 +41,7 @@ function parkCard(item) {
 }
 
 function showCards(list, target) {
-  const tableBody = target.querySelector("tbody");
+  const tableBody = document.getElementById("tableBody");
   tableBody.innerHTML = ""; // Clear the previous results
 
   if (list.length === 0) {
@@ -63,27 +63,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const results = document.getElementById("list");
   const select = document.getElementById("location");
   const selectType = document.getElementById("type");
+  const searchBox = document.getElementById("searchBox");
 
   function applyFilters() {
-    const v = select.selectedOptions[0].value;
-    const matches = nationalParksArray.filter(
-      (item) => item.State === v || v === ""
-    );
+    const locationValue = select.selectedOptions[0].value;
+    const typeValue = selectType.selectedOptions[0].value;
+    const searchValue = searchBox.value.toLowerCase().trim();
 
-    const v2 = selectType.selectedOptions[0].value;
-    const matches2 = matches.filter(
-      (item) =>
-        item.LocationName.toLowerCase().includes(v2.toLowerCase()) || v2 === ""
-    );
+    const matches = nationalParksArray.filter((item) => {
+      const locationMatch = item.State === locationValue || locationValue === "";
+      const typeMatch =
+        item.LocationName.toLowerCase().includes(typeValue.toLowerCase()) || typeValue === "";
+      const searchMatch =
+        item.LocationName.toLowerCase().includes(searchValue) ||
+        item.State.toLowerCase().includes(searchValue);
+      return locationMatch && typeMatch && searchMatch;
+    });
 
-    showCards(matches2, results);
+    showCards(matches, results);
   }
 
   locationsArray.forEach((item) => select.appendChild(locationOption(item)));
-  parkTypesArray.forEach((item) =>
-    selectType.appendChild(locationOption(item))
-  );
+  parkTypesArray.forEach((item) => selectType.appendChild(locationOption(item)));
 
   select.addEventListener("change", applyFilters);
   selectType.addEventListener("change", applyFilters);
+  searchBox.addEventListener("input", applyFilters);
+
+  applyFilters(); // Initial filter application
 });
