@@ -19,10 +19,7 @@ select {
 #results {
   margin-top: 2em;
 }
-nav {
-  display: block;
-  margin: 1em;
-}
+
 nav a {
   text-decoration: none;
   background-color: darkolivegreen;
@@ -70,9 +67,11 @@ td {
   object-fit: contain;
   color: white;
 }
-
-td:hover {
-  background-color: white;
+tbody {
+  background-color: transparent;
+}
+tbody tr:hover {
+  background-color: #00000099;
   color: black;
 }
 
@@ -88,4 +87,19 @@ img.img-fluid:hover {
 
 p {
   font-size: 20px;
+}
+
+input[type="text"] {
+  background-color: transparent;
+}
+
+.form-control::placeholder {
+  color: white;
+}
+
+select#location,
+#type,
+#mountainList {
+  background-color: transparent;
+  color: white;
 }
