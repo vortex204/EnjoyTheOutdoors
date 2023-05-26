@@ -89,6 +89,10 @@ p {
   font-size: 20px;
 }
 
+.input-group-text {
+  background-color: transparent;
+}
+
 input[type="text"] {
   background-color: transparent;
 }
