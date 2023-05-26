@@ -29,6 +29,21 @@ function parkCard(item) {
   const fax = document.createElement("td");
   fax.textContent = item.Fax;
 
+  const visitLink = document.createElement("a");
+  visitLink.textContent = item.link;
+  visitLink.target = "_blank";
+  visitLink.innerHTML = "Visit";
+
+  if (item.Visit !== undefined) {
+    visitLink.href = item.Visit;
+  } else {
+    visitLink.innerHTML =
+      "<span style='font-size:40px'>&#128581;&#127995;</span> N/A";
+  }
+
+  const visitCell = document.createElement("td");
+  visitCell.appendChild(visitLink);
+
   row.appendChild(name);
   row.appendChild(address);
   row.appendChild(city);
@@ -36,6 +51,7 @@ function parkCard(item) {
   row.appendChild(zipcode);
   row.appendChild(phone);
   row.appendChild(fax);
+  row.appendChild(visitCell);
 
   return row;
 }
@@ -47,7 +63,7 @@ function showCards(list, target) {
   if (list.length === 0) {
     const tableRow = document.createElement("tr");
     const message = document.createElement("td");
-    message.setAttribute("colspan", "7");
+    message.setAttribute("colspan", "8");
     message.textContent = "No results found.";
     tableRow.appendChild(message);
     tableBody.appendChild(tableRow);
@@ -71,9 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchValue = searchBox.value.toLowerCase().trim();
 
     const matches = nationalParksArray.filter((item) => {
-      const locationMatch = item.State === locationValue || locationValue === "";
+      const locationMatch =
+        item.State === locationValue || locationValue === "";
       const typeMatch =
-        item.LocationName.toLowerCase().includes(typeValue.toLowerCase()) || typeValue === "";
+        item.LocationName.toLowerCase().includes(typeValue.toLowerCase()) ||
+        typeValue === "";
       const searchMatch =
         item.LocationName.toLowerCase().includes(searchValue) ||
         item.State.toLowerCase().includes(searchValue);
@@ -84,7 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   locationsArray.forEach((item) => select.appendChild(locationOption(item)));
-  parkTypesArray.forEach((item) => selectType.appendChild(locationOption(item)));
+  parkTypesArray.forEach((item) =>
+    selectType.appendChild(locationOption(item))
+  );
 
   select.addEventListener("change", applyFilters);
   selectType.addEventListener("change", applyFilters);
