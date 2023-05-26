@@ -88,7 +88,9 @@ img.img-fluid:hover {
 p {
   font-size: 20px;
 }
-
+p:hover {
+  background-color: #00000099;
+}
 .input-group-text {
   background-color: transparent;
 }
